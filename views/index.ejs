@@ -10,7 +10,7 @@
     <ul>
       <% for (let i = 0; i < messages.length; i++) { %>
         <li>
-          <h2>Username: <%= messages[i].user %></h2>
+          <h2>Username: <%= messages[i].username %></h2>
           <p>Message text: <%= messages[i].text %></p>
           <p>Send time msg: <%= messages[i].added %></p>
           <a href='msg/<%=[i]%>'>Open message</a>

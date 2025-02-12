@@ -4,6 +4,7 @@ const path = require('node:path');
 const { indexRouter } = require('./routers/index')
 const messageRouter = require('./routers/newMessage')
 const viewMsgRouter = require('./routers/message')
+require('dotenv').config()
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,5 +19,5 @@ app.use((err, req, res, next) => {
 
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => console.log('Server started...'))
+const PORT = process.env.PORT || 8000
+app.listen(PORT, () => console.log(`Server listen on port ${PORT}`))

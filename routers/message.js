@@ -1,14 +1,19 @@
 const express = require('express');
 const viewMsgRouter = express.Router();
-const { messages} = require('./../routers/index') 
+const db = require('../db/queries');
 
-viewMsgRouter.get('/:msg', (req, res) => {
 
-   if(req.params -1 > messages.length) {
+
+viewMsgRouter.get('/:msg', async (req, res) => {
+  const message = await db.getAllMessages();
+  
+   if(req.params -1 > message.length) {
      next(new Error('PAGE NOT FOUND'))
    }
+   
    const id = Number(req.params.msg)
-   res.render('allMesages', {messages: messages, id: id})
+
+   res.render('allMesages', {messages: message, id: id})
 })
 
 module.exports = viewMsgRouter;
